@@ -1,0 +1,117 @@
+import { NavLinkItem } from "@/interfaces/header-interfaces";
+import { Category } from "@/types/header-types";
+
+export const NAVIGATION_LINKS: NavLinkItem[] = [
+  { id: "1", label: "My Account", href: "#" },
+  { id: "2", label: "For Companies", href: "#" },
+  { id: "3", label: "About Us", href: "#" },
+  {
+    id: "4",
+    label: "Help Center",
+    href: "#",
+    icon: (
+      <svg
+        className="w-3 h-3"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      </svg>
+    ),
+  },
+  {
+    id: "5",
+    label: "Change Language (EN)",
+    href: "#",
+    icon: (
+      <svg
+        className="w-3 h-3"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+    ),
+  },
+];
+
+export const Categories: Category[] = [
+  {
+    id: 1,
+    name: "Electronics",
+    subcategories: [
+      "Smartphones",
+      "Laptops",
+      "Headphones",
+      "TVs",
+      "Gaming",
+      "Cameras",
+      "Monitors",
+      "Smart Watches",
+    ],
+  },
+  {
+    id: 2,
+    name: "Fashion",
+    subcategories: [
+      "Men",
+      "Women",
+      "Shoes",
+      "Bags",
+      "Accessories",
+      "Watches",
+      "Jackets",
+      "Sportswear",
+    ],
+  },
+  {
+    id: 3,
+    name: "Home",
+    subcategories: [
+      "Furniture",
+      "Kitchen",
+      "Decor",
+      "Lighting",
+      "Garden",
+      "Storage",
+      "Bedroom",
+      "Bathroom",
+    ],
+  },
+  {
+    id: 4,
+    name: "Sports",
+    subcategories: [
+      "Fitness",
+      "Running",
+      "Cycling",
+      "Football",
+      "Basketball",
+      "Swimming",
+      "Yoga",
+      "Hiking",
+    ],
+  },
+  {
+    id: 5,
+    name: "Beauty",
+    subcategories: [
+      "Makeup",
+      "Skincare",
+      "Perfumes",
+      "Hair Care",
+      "Nail Care",
+      "Body Care",
+    ],
+  },
+];
