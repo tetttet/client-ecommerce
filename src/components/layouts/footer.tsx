@@ -98,14 +98,14 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="mt-12 sm:mt-20">
+    <footer className="">
       {/* TOP */}
-      <div className="bg-[#f2f2f2]">
+      <div className="bg-[#f0eee6]">
         <div className="mx-auto max-w-365 px-5 py-8 sm:px-8 sm:py-10">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-12">
             {footerSections.map((section) => (
               <div key={section.title}>
-                <h3 className="mb-4 text-[18px] font-bold text-[#333]">
+                <h3 className="mb-4 text-[18px] font-bold text-[#141413]">
                   {section.title}
                 </h3>
 
@@ -113,7 +113,7 @@ const Footer = () => {
                   {section.links.map((link) => (
                     <li
                       key={link}
-                      className="cursor-pointer text-[14px] text-[#555] transition hover:text-black"
+                      className="cursor-pointer text-[14px] text-[#141413]/70 transition hover:text-[#141413]"
                     >
                       {link}
                     </li>
@@ -124,11 +124,11 @@ const Footer = () => {
 
             {/* Country */}
             <div>
-              <h3 className="mb-4 text-[18px] font-bold text-[#333]">
+              <h3 className="mb-4 text-[18px] font-bold text-[#141413]">
                 Change country
               </h3>
 
-              <button className="flex w-full items-center gap-3 rounded-md border border-gray-300 bg-white px-4 py-3 text-[14px] font-medium">
+              <button className="flex w-full items-center gap-3 rounded-md border border-gray-300 bg-white px-4 py-3 text-[14px] font-medium text-[#141413]">
                 <span className="text-xl">🇹🇷</span>
 
                 <span>Select country</span>
@@ -151,21 +151,21 @@ const Footer = () => {
               </button>
 
               <div className="mt-12">
-                <h4 className="mb-2 text-[18px] font-semibold text-[#333]">
+                <h4 className="mb-2 text-[18px] font-semibold text-[#141413]">
                   Secure shopping
                 </h4>
 
-                <p className="text-[14px] text-gray-500">
+                <p className="text-[14px] text-[#141413]/60">
                   Payment providers will be added later
                 </p>
               </div>
 
               <div className="mt-8">
-                <h4 className="mb-2 text-[18px] font-semibold text-[#333]">
+                <h4 className="mb-2 text-[18px] font-semibold text-[#141413]">
                   Security certificate
                 </h4>
 
-                <p className="text-[14px] text-gray-500">
+                <p className="text-[14px] text-[#141413]/60">
                   Certificates will be added later
                 </p>
               </div>

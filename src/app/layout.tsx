@@ -3,7 +3,6 @@ import "./globals.css";
 import Header from "@/components/layouts/header";
 import Footer from "@/components/layouts/footer";
 import TopHeader from "@/components/layouts/top-header";
-import FooterTwo from "@/components/layouts/footertwo";
 
 export const metadata: Metadata = {
   title: "bazaar",
@@ -21,7 +20,6 @@ export default function RootLayout({
         <TopHeader />
         <Header />
         {children}
-        <FooterTwo />
         <Footer />
       </body>
     </html>

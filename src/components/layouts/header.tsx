@@ -1,11 +1,15 @@
 "use client";
 import { Categories } from "@/constants/header-links";
 import { Category } from "@/types/header-types";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const Header = () => {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openMobileCategoryId, setOpenMobileCategoryId] = useState<
+    number | null
+  >(Categories[0]?.id || null);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
@@ -17,14 +21,21 @@ const Header = () => {
 
   return (
     <header
-      className="relative w-full border-b border-gray-100 bg-white"
+      className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white"
       onMouseLeave={() => setActiveCategory(null)}
     >
       {/* Main Header */}
       <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-12">
         {/* Logo */}
-        <div className="cursor-pointer text-2xl font-bold text-black sm:text-3xl">
-          Bazaar
+        <div className="cursor-pointer">
+          <Image
+            src="/images/logos/bazaar.png"
+            alt="Bazaar"
+            width={120}
+            height={40}
+            priority
+            className="h-auto w-24 sm:w-32"
+          />
         </div>
 
         {/* Categories */}
@@ -119,7 +130,7 @@ const Header = () => {
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
-            className="relative flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white transition hover:border-[#ff6200] md:hidden"
+            className="relative flex h-10 w-10 items-center justify-center bg-white transition hover:border-[#ff6200] md:hidden"
           >
             <span
               className={`absolute h-0.5 w-5 rounded-full bg-black transition duration-300 ${
@@ -175,18 +186,18 @@ const Header = () => {
         onClick={() => setIsMobileMenuOpen(false)}
       >
         <div
-          className={`ml-auto flex h-full w-[40%] min-w-[260px] max-w-sm flex-col bg-white shadow-2xl transition-transform duration-300 ease-out ${
+          className={`ml-auto flex h-full w-[70%] min-w-[260px] max-w-sm flex-col bg-white shadow-2xl transition-transform duration-300 ease-out ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="flex h-16 items-center justify-between border-b border-gray-100 px-5">
-            <span className="text-2xl font-bold text-black">Bazaar</span>
+          <div className="flex items-center justify-between px-5 pt-4">
+            <span className="text-2xl font-bold text-black"></span>
 
             <button
               aria-label="Close menu"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="relative flex h-10 w-10 items-center justify-center rounded-full border border-gray-200"
+              className="relative flex h-10 w-10 items-center justify-center"
             >
               <span className="absolute h-0.5 w-5 rotate-45 rounded-full bg-black" />
               <span className="absolute h-0.5 w-5 -rotate-45 rounded-full bg-black" />
@@ -194,37 +205,54 @@ const Header = () => {
           </div>
 
           <div className="flex-1 overflow-y-auto px-5 py-6">
-            <div className="mb-6 grid grid-cols-2 gap-3">
-              {["Search", "Account", "Wishlist", "Cart"].map((item) => (
-                <button
-                  key={item}
-                  className="rounded-md border border-gray-200 px-4 py-3 text-left text-sm font-semibold text-black transition hover:border-[#ff6200] hover:text-[#ff6200]"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-
             <nav className="space-y-5">
-              {Categories.map((category) => (
-                <div key={category.id} className="border-b border-gray-100 pb-5">
-                  <button className="flex w-full items-center justify-between text-left text-[18px] font-bold uppercase text-black">
-                    {category.name}
-                    <span className="text-[#ff6200]">+</span>
-                  </button>
+              {Categories.map((category) => {
+                const isOpen = openMobileCategoryId === category.id;
 
-                  <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
-                    {category.subcategories.map((subcategory) => (
-                      <button
-                        key={subcategory}
-                        className="text-left text-sm text-gray-600 transition hover:text-black"
+                return (
+                  <div
+                    key={category.id}
+                    className="border-b border-gray-100 pb-5"
+                  >
+                    <button
+                      onClick={() =>
+                        setOpenMobileCategoryId(isOpen ? null : category.id)
+                      }
+                      className="flex w-full items-center justify-between text-left text-[18px] font-bold uppercase text-black"
+                    >
+                      {category.name}
+                      <span
+                        className={`text-[#ff6200] transition-transform duration-300 ${
+                          isOpen ? "rotate-45" : "rotate-0"
+                        }`}
                       >
-                        {subcategory}
-                      </button>
-                    ))}
+                        +
+                      </span>
+                    </button>
+
+                    <div
+                      className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
+                        isOpen
+                          ? "mt-3 grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="min-h-0">
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                          {category.subcategories.map((subcategory) => (
+                            <button
+                              key={subcategory}
+                              className="text-left text-sm text-gray-600 transition hover:text-black"
+                            >
+                              {subcategory}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </nav>
           </div>
         </div>
