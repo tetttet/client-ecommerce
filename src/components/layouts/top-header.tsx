@@ -3,7 +3,7 @@ import React from "react";
 
 const TopHeader: React.FC = () => {
   return (
-    <div className="flex justify-end items-center py-2 px-5 gap-6">
+    <div className="hidden items-center justify-end gap-6 px-5 py-2 sm:flex">
       {NAVIGATION_LINKS.map(({ id, label, href, icon }) => (
         <a
           key={id}

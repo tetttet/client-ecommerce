@@ -98,11 +98,11 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="mt-20">
+    <footer className="mt-12 sm:mt-20">
       {/* TOP */}
       <div className="bg-[#f2f2f2]">
-        <div className="mx-auto max-w-365 px-8 py-10">
-          <div className="grid grid-cols-5 gap-12">
+        <div className="mx-auto max-w-365 px-5 py-8 sm:px-8 sm:py-10">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-12">
             {footerSections.map((section) => (
               <div key={section.title}>
                 <h3 className="mb-4 text-[18px] font-bold text-[#333]">
@@ -176,7 +176,7 @@ const Footer = () => {
 
       {/* BOTTOM */}
       <div className="bg-[#171717]">
-        <div className="mx-auto max-w-365 px-8 py-4">
+        <div className="mx-auto max-w-365 px-5 py-5 sm:px-8 sm:py-4">
           <div className="flex items-center gap-3">
             {socialLinks.map((social) => (
               <a
@@ -190,13 +190,13 @@ const Footer = () => {
             ))}
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-6">
+          <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6">
             <p className="text-[12px] text-[#bdbdbd]">
               ©2026 DSM Group Danışmanlık İletişim ve Satış Tic. A.Ş. All rights
               reserved.
             </p>
 
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-6">
               {bottomLinks.map((link) => (
                 <span
                   key={link}

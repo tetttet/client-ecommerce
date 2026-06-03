@@ -107,22 +107,22 @@ const socialLinks = [
 
 const FooterTwo = () => {
   return (
-    <footer className="mt-20">
+    <footer className="mt-12 sm:mt-20">
       {/* TOP */}
       <div className="bg-[#f2f2f2]">
-        <div className="mx-auto max-w-[1400px] px-8 py-14">
-          <div className="grid grid-cols-5 gap-12">
+        <div className="mx-auto max-w-[1400px] px-5 py-8 sm:px-8 sm:py-14">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-12">
             {footerSections.map((section) => (
               <div key={section.title}>
-                <h3 className="mb-6 text-[28px] font-bold text-[#333]">
+                <h3 className="mb-4 text-[20px] font-bold text-[#333] sm:mb-6 sm:text-[28px]">
                   {section.title}
                 </h3>
 
-                <ul className="space-y-4">
+                <ul className="space-y-2 sm:space-y-4">
                   {section.links.map((link) => (
                     <li
                       key={link}
-                      className="cursor-pointer text-[18px] text-[#555] transition hover:text-black"
+                      className="cursor-pointer text-[14px] text-[#555] transition hover:text-black sm:text-[18px]"
                     >
                       {link}
                     </li>
@@ -133,11 +133,11 @@ const FooterTwo = () => {
 
             {/* Country */}
             <div>
-              <h3 className="mb-6 text-[28px] font-bold text-[#333]">
+              <h3 className="mb-4 text-[20px] font-bold text-[#333] sm:mb-6 sm:text-[28px]">
                 Change country
               </h3>
 
-              <button className="flex w-full items-center gap-3 rounded-md border border-gray-300 bg-white px-4 py-3 text-[16px] font-medium">
+              <button className="flex w-full items-center gap-3 rounded-md border border-gray-300 bg-white px-4 py-3 text-[14px] font-medium sm:text-[16px]">
                 <span className="text-xl">🇹🇷</span>
 
                 <span>Select country</span>
@@ -159,8 +159,8 @@ const FooterTwo = () => {
                 </svg>
               </button>
 
-              <div className="mt-12">
-                <h4 className="mb-3 text-xl font-semibold text-[#333]">
+              <div className="mt-8 sm:mt-12">
+                <h4 className="mb-3 text-[18px] font-semibold text-[#333] sm:text-xl">
                   Secure shopping
                 </h4>
 
@@ -185,27 +185,27 @@ const FooterTwo = () => {
 
       {/* BOTTOM */}
       <div className="bg-[#171717]">
-        <div className="mx-auto max-w-[1400px] px-8 py-10">
-          <div className="flex items-center gap-5">
+        <div className="mx-auto max-w-[1400px] px-5 py-7 sm:px-8 sm:py-10">
+          <div className="flex items-center gap-3 sm:gap-5">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
                 href={social.href}
                 aria-label={social.name}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-white transition hover:scale-105"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white transition hover:scale-105 sm:h-12 sm:w-12"
               >
                 {social.icon}
               </a>
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-6">
-            <p className="text-sm text-gray-400">
+          <div className="mt-6 flex flex-col gap-5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6">
+            <p className="text-[12px] text-gray-400 sm:text-sm">
               ©2026 DSM Group Danışmanlık İletişim ve Satış Tic. A.Ş. All rights
               reserved.
             </p>
 
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-6">
               {bottomLinks.map((link) => (
                 <span
                   key={link}
