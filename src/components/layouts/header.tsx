@@ -15,7 +15,7 @@ const Header = () => {
       <div className="mx-auto flex h-16 items-center justify-between px-12">
         {/* Logo */}
         <div className="cursor-pointer text-3xl font-bold text-black">
-          Market
+          Bazaar
         </div>
 
         {/* Categories */}

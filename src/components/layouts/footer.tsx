@@ -2,7 +2,7 @@ import React from "react";
 
 const footerSections = [
   {
-    title: "Trendyol",
+    title: "Bazaar",
     links: [
       "Who we are",
       "Careers",
