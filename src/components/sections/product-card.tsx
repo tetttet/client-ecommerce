@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Product } from "@/types/product";
 
 interface ProductCardProps {
@@ -10,6 +11,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const router = useRouter();
 
   const discount = product.oldPrice
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
@@ -26,8 +28,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     setCurrentImageIndex(index);
   };
 
+  const openProduct = () => {
+    router.push(`/products/${product.id}`);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openProduct();
+    }
+  };
+
   return (
-    <div className="group bg-white border border-black/[0.08] rounded-xl overflow-hidden cursor-pointer transition-all duration-200 hover:border-black/20 hover:-translate-y-0.5">
+    <div
+      role="link"
+      tabIndex={0}
+      aria-label={`Open ${product.name} details`}
+      onClick={openProduct}
+      onKeyDown={handleKeyDown}
+      className="group bg-white border border-black/[0.08] rounded-xl overflow-hidden cursor-pointer transition-all duration-200 hover:border-black/20 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#f05a16]/40 focus:ring-offset-2"
+    >
       {/* Image */}
       <div
         className="relative w-full h-60 bg-neutral-50 overflow-hidden"
@@ -131,6 +151,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <button
             aria-label="Add to cart"
             className="w-[30px] h-[30px] rounded-full border border-neutral-200 flex items-center justify-center text-neutral-700 hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-150"
+            onClick={(e) => e.stopPropagation()}
           >
             <svg
               className="w-4 h-4"
