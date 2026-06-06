@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { ProductGallery } from "@/components/sections/product-gallery";
 import { products } from "@/data/products";
 
 type ProductPageProps = {
@@ -102,45 +102,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </Link>
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-start">
-          <div className="grid gap-3 sm:grid-cols-[88px_minmax(0,1fr)]">
-            <div className="order-2 grid grid-cols-4 gap-3 sm:order-1 sm:grid-cols-1">
-              {product.images.map((image, index) => (
-                <div
-                  key={image}
-                  className="relative aspect-square overflow-hidden rounded-lg border border-black/[0.08] bg-white"
-                >
-                  <Image
-                    src={image}
-                    alt={`${product.name} view ${index + 1}`}
-                    fill
-                    sizes="88px"
-                    className="object-cover"
-                  />
-                </div>
-              ))}
-            </div>
+          <ProductGallery
+            discount={discount}
+            images={product.images}
+            productName={product.name}
+          />
 
-            <div className="relative order-1 aspect-[4/5] overflow-hidden rounded-xl bg-white shadow-sm sm:order-2 lg:aspect-[5/6]">
-              <Image
-                src={product.images[0]}
-                alt={product.name}
-                fill
-                priority
-                sizes="(min-width: 1024px) 56vw, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute left-4 top-4 flex gap-2">
-                <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-medium uppercase tracking-wide text-neutral-900 backdrop-blur">
-                  {discount > 0 ? `-${discount}%` : "New"}
-                </span>
-                <span className="rounded-full bg-[#f05a16] px-3 py-1 text-xs font-medium uppercase tracking-wide text-white">
-                  In stock
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-xl border border-black/[0.08] bg-white p-5 shadow-sm md:p-7">
+          <div className="p-0 md:p-2">
             <p className="mb-2 text-xs uppercase tracking-[0.16em] text-[#f05a16]">
               {product.category}
             </p>
@@ -184,7 +152,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <button className="rounded-lg bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-800">
                 Add to cart
               </button>
-              <button className="rounded-lg border border-neutral-200 px-5 py-3 text-sm font-medium text-neutral-900 transition-colors hover:border-neutral-400 hover:bg-neutral-50">
+              <button className="rounded-lg bg-neutral-100 px-5 py-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-200">
                 Add to favorites
               </button>
             </div>
@@ -193,7 +161,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {details.features.map((feature) => (
                 <div
                   key={feature}
-                  className="rounded-lg border border-black/[0.06] bg-[#fbfaf8] px-4 py-3"
+                  className="rounded-lg bg-[#f2f0ec] px-4 py-3"
                 >
                   <p className="text-sm font-medium text-neutral-900">
                     {feature}
@@ -202,7 +170,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               ))}
             </div>
 
-            <div className="mt-8 border-t border-black/[0.08] pt-6">
+            <div className="mt-8 pt-6">
               <h2 className="text-lg font-semibold text-neutral-950">
                 Product details
               </h2>
